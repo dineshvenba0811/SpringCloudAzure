@@ -1,6 +1,8 @@
 package com.dinesh.azure.samples.springcloudazure.controller;
 
+import com.azure.core.exception.ClientAuthenticationException;
 import com.azure.security.keyvault.secrets.SecretClient;
+import com.azure.security.keyvault.secrets.models.KeyVaultSecret;
 import com.dinesh.azure.samples.springcloudazure.config.SecretClientConfiguration;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +20,15 @@ public class AzureController {
     private SecretClient secretClient;
     @GetMapping("/keyvault")
     public String getAzureKeyValutSecret(){
-     System.out.println("key -"+secretClient.getSecret("mysql-database-keys").getValue());
-     return secretClient.getSecret("mysql-database-keys").getValue();
+
+        try {
+            String secret = secretClient.getSecret("mysqldatabase-keys").getValue();
+        } catch (ClientAuthenticationException e) {
+            //Handle Exception
+            e.printStackTrace();
+        }
+
+
+     return secretClient.getSecret("mysqldatabase-keys").getValue();
     }
 }

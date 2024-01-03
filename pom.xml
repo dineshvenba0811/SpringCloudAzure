@@ -44,17 +44,28 @@
 			<scope>import</scope>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.azure/azure-security-keyvault-secrets -->
-		<dependency>
-			<groupId>com.azure</groupId>
-			<artifactId>azure-security-keyvault-secrets</artifactId>
-			<version>4.7.3</version>
-		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/com.azure/azure-identity -->
 		<dependency>
 			<groupId>com.azure</groupId>
 			<artifactId>azure-identity</artifactId>
 			<version>1.11.1</version>
 			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.azure.resourcemanager</groupId>
+			<artifactId>azure-resourcemanager</artifactId>
+			<version>2.6.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.azure</groupId>
+			<artifactId>azure-storage-blob</artifactId>
+			<version>12.8.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.azure.spring</groupId>
+			<artifactId>spring-cloud-azure-starter-keyvault-secrets</artifactId>
+			<version>4.14.0</version>
 		</dependency>
 	</dependencies>
 

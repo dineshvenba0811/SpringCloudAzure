@@ -12,3 +12,15 @@ spring:
     show-sql: true
   application:
     name: azure-service
+spring.cloud.azure:
+  keyvault:
+    secret:
+      property-source-enabled: true
+      property-sources:
+        - endpoint: https://organisationkey-dinesh.vault.azure.net/
+          retry:
+            mode: exponential
+            exponential:
+              max-retries: 4
+              base-delay: PT0.0801S
+              max-delay: PT9S

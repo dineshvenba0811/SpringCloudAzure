@@ -1,8 +1,10 @@
 package com.dinesh.azure.samples.springcloudazure.config;
 
-import com.azure.identity.DefaultAzureCredentialBuilder;
+import com.azure.core.exception.ClientAuthenticationException;
+import com.azure.identity.*;
 import com.azure.security.keyvault.secrets.SecretClient;
 import com.azure.security.keyvault.secrets.SecretClientBuilder;
+import com.azure.security.keyvault.secrets.models.KeyVaultSecret;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -10,7 +12,9 @@ import org.springframework.context.annotation.Configuration;
 public class SecretClientConfiguration {
     @Bean
     public SecretClient createSecretClient(){
-        return new SecretClientBuilder().vaultUrl("https://organisationkeyvault.vault.azure.net/")
-                .credential(new DefaultAzureCredentialBuilder().build()).buildClient();
+
+        AzureCliCredential cliCredential = new AzureCliCredentialBuilder().build();
+        return new SecretClientBuilder().vaultUrl("https://organisationkey-dinesh.vault.azure.net/")
+                .credential(cliCredential).buildClient();
     }
 }
